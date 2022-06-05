@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>B</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div class="card col-lg-6 mx-auto mt-5">
+      <div class="card-body">
+        <form action="/renew/<%= @content.id %>" method="post">
+          <p>名前：<input type="text" name="user_name" value="<%= @content.name %>" class="form-control"></p>
+          <p>本文：<input type="text" name="body" value="<%= @content.body %>" class="form-control"></p>
+          <p><input type="submit" value="編集完了" class="btn btn-dark float-right"></p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

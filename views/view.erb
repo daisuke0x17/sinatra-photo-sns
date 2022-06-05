@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>BIKLE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div class="card col-lg-6 mx-auto mt-5">
+      <div class="card-body">
+          <% unless @content.bike_img.empty? %>
+            <a href="/view/<%= @content.id %>"><p><img class="img-fluid rounded" src="<%= @content.bike_img %>"></p></a>
+        <% end %>
+        <p><%= @content.bike_type %></p>
+        <p><%= @content.model_year %></p>
+        <p><%= @content.custom_part %></p>
+        <p><%= @content.custom_brand %></p>
+        <p><a href="<%= @content.custom_url %>" target="_blank">商品リンク</a></p>
+        <span class="card-footer-text"><%= @content.good %></span>
+        <form action="/good/<%= @content.id %>" method="post">
+            <input type="submit" value="LIKE" class="btn card-footer-text">
+        </form>
+        <a href="/">戻る</a>
+      </div>
+    </div>
+  </body>
+</html>
