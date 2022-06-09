@@ -4,5 +4,30 @@
 }
 
 body {
-  background-color: rgb(253, 253, 253);
+  background-color: #271c19;
+}
+
+.card-bg-color{
+  background-color: #55423d;
+}
+
+.char-white{
+  color: #fffffe;
+}
+
+.in-card-stroke{
+  border: 3px #140d0b solid;
+}
+
+.in-card-bg{
+  background-color: #fff3ec;
+}
+
+.in-card-post-button{
+  background-color: #fffffe;
+  color: #271c19;
+}
+
+.img-border{
+   border: 3px #140d0b solid;
 }

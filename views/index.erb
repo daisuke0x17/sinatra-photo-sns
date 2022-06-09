@@ -11,28 +11,30 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <nav>
-      <div class="title">BIKLE</div>
+    <div class="nav d-flex flex-row justify-content-between">
+      <div class="title char-white">BIKLE</div>
       <dvi class="g-2 mt-3">
         <form class="form-inline row" action="/">
           <p class="col-auto"><input type="text" name="keyword" class="form-control"></p>
           <p class="col-auto"><input type="submit" class="form-control btn-dark"></p>
         </form>
       </dvi>
-      <a href="/post">投稿する</a>
-    </nav>
+      <div>
+        <label class="btn"><a href="/post">投稿する</a></label>
+      </div>
+    </div>
     <div class="container-fluid">
       <div class="row d-flex justify-content-center">
         <% @contents.each do |content| %>
-          <div class = "card col-lg-3 mb-2 mx-5">
+          <div class = "card col-lg-3 mb-2 mx-5 card-bg-color">
             <div class="card-body">
               <% unless content.bike_img.empty? %>
-                <a href="/view/<%= content.id %>"><p><img class="img-fluid rounded" src="<%= content.bike_img %>"></p></a>
+                <a href="/view/<%= content.id %>"><p><img class="img-fluid rounded img-border" src="<%= content.bike_img %>"></p></a>
               <% end %>
-              <p><%= content.bike_type %></p>
-              <p><%= content.model_year %></p>
+              <p class="char-white"><%= content.bike_type %></p>
+              <p class="char-white"><%= content.model_year %></p>
               <div class="d-flex justify-content-end align-items-center mt-3">
-                <span class="card-footer-text"><%= content.good %></span>
+                <span class="card-footer-text char-white"><%= content.good %></span>
                 <form action="/good/<%= content.id %>" method="post">
                   <input type="submit" value="LIKE" class="btn card-footer-text">
                 </form>
