@@ -3,31 +3,78 @@
   font-size: 0.5em;
 }
 
-body {
-  background-color: #271c19;
-}
-
-.card-bg-color{
-  background-color: #55423d;
-}
-
 .char-white{
-  color: #fffffe;
+  color: #F5F5F5;
 }
 
-.in-card-stroke{
-  border: 3px #140d0b solid;
+.bg-theme-color{
+  background-color: #93764E;
 }
 
-.in-card-bg{
-  background-color: #fff3ec;
+.outline-white{
+  border-color: #F5F5F5;
 }
 
-.in-card-post-button{
-  background-color: #fffffe;
-  color: #271c19;
+.hover-accent :hover{
+  color: #0FA1FC;
+  transition: color .15s;
+}
+.bg-white{
+  background-color: #F5F5F5!important;
 }
 
-.img-border{
-   border: 3px #140d0b solid;
+.border-bottom{
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2)!important;
+}
+
+.container {
+  display: flex; /* 横並び */
+  flex-wrap: wrap; /* 折り返す */
+}
+.item {
+  position: relative;
+  width: 33.3%; /* 幅 */
+  padding-bottom: 33.3%; /* 幅と同じ高さをつくる */
+  border: solid 2px #FFF; /* 白の枠線 */
+  box-sizing: border-box;
+}
+.item img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item p{
+  position: absolute;
+  padding:  20px;
+  left:  5px;
+  top: 315px;
+  font-size:20px;
+  font-family: 'Anton', sans-serif;
+  color: #000;
+  text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
+              -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+              0px 1px 0 #FFF,  0-1px 0 #FFF,
+              -1px 0 0 #FFF, 1px 0 0 #FFF;
+}
+
+.ml-center{
+  margin-left:725px;
+}
+
+.title{
+  font-family: 'Bebas Neue', cursive;
+}
+
+h5{
+  font-family: 'Bebas Neue', cursive;
+  font-size:60px;
+  margin:0;
+}
+
+.main-wrapper{
+  padding-top:70px;
+  background: #f8f8f8;
+  width: 70%;
 }

@@ -16,6 +16,17 @@ end
 
 get "/" do
   @contents = Contribution.all.order("id desc")
+  if params[:keyword]
+    # keyword = params[:keyword]
+    # contributions = Contribution.arel_table
+    # @contents = contributions.where(contributions[:bike_type].matches('%' + keyword + '%'))
+    # @contents = Contribution.where('bike_type like ?','%' + keyword + '%')
+    if params[:keyword]
+      f = '%' + params[:keyword] + '%'
+      bike_table = Contribution.arel_table
+      @contents = Contribution.where((bike_table[:bike_type].matches(f)).or(bike_table[:model_year].matches(f)))
+    end
+  end
   erb :index
 end
 

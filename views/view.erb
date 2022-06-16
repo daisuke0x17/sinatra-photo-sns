@@ -5,24 +5,42 @@
     <title>BIKLE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <script src="https://kit.fontawesome.com/982f8f279b.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="card col-lg-6 mx-auto mt-5">
+    <div class="card col-lg-6 mx-auto mt-5 p-0">
       <div class="card-body">
           <% unless @content.bike_img.empty? %>
+          <div class="d-flex justify-content-center">
             <a href="/view/<%= @content.id %>"><p><img class="img-fluid rounded" src="<%= @content.bike_img %>"></p></a>
+          </div>
         <% end %>
-        <p><%= @content.bike_type %></p>
-        <p><%= @content.model_year %></p>
-        <p><%= @content.custom_part %></p>
-        <p><%= @content.custom_brand %></p>
-        <p><a href="<%= @content.custom_url %>" target="_blank">商品リンク</a></p>
-        <span class="card-footer-text"><%= @content.good %></span>
-        <form action="/good/<%= @content.id %>" method="post">
-            <input type="submit" value="LIKE" class="btn card-footer-text">
-        </form>
-        <a href="/">戻る</a>
+        <h5 class="card-title text-center"><%= @content.bike_type %></h5>
+        <p class="card-text"><%= @content.my_favo %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">年式：<%= @content.model_year %></li>
+          <li class="list-group-item">カスタムパーツ：<%= @content.custom_part %></li>
+          <li class="list-group-item">パーツメーカー：<%= @content.custom_brand %></li>
+        </ul>
+        <div class="card-body">
+          <a href="<%= @content.custom_url %>" class="card-link" target="_blank">商品リンク</a>
+        </div>
+      <div class="card-footer text-muted">
+        <div class="d-flex justify-content-start">
+          <label><%= @content.good %></label>
+          <form action="/good/<%= @content.id %>" method="post">
+            <label for="like"><i class="fa-solid fa-heart ml-1"></i></label>
+            <input type="submit" class="d-none" id="like">
+          </form>
+        </div>
+         <div class="d-flex justify-content-end">
+          <a href="/" class="btn btn-dark">戻る</a>
+        </div>
       </div>
     </div>
   </body>

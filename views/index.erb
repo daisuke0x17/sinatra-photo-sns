@@ -9,40 +9,69 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/982f8f279b.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="nav d-flex flex-row justify-content-between">
-      <div class="title char-white">BIKLE</div>
-      <dvi class="g-2 mt-3">
-        <form class="form-inline row" action="/">
-          <p class="col-auto"><input type="text" name="keyword" class="form-control"></p>
-          <p class="col-auto"><input type="submit" class="form-control btn-dark"></p>
-        </form>
-      </dvi>
-      <div>
-        <label class="btn"><a href="/post">投稿する</a></label>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row d-flex justify-content-center">
-        <% @contents.each do |content| %>
-          <div class = "card col-lg-3 mb-2 mx-5 card-bg-color">
-            <div class="card-body">
-              <% unless content.bike_img.empty? %>
-                <a href="/view/<%= content.id %>"><p><img class="img-fluid rounded img-border" src="<%= content.bike_img %>"></p></a>
-              <% end %>
-              <p class="char-white"><%= content.bike_type %></p>
-              <p class="char-white"><%= content.model_year %></p>
-              <div class="d-flex justify-content-end align-items-center mt-3">
-                <span class="card-footer-text char-white"><%= content.good %></span>
-                <form action="/good/<%= content.id %>" method="post">
-                  <input type="submit" value="LIKE" class="btn card-footer-text">
-                </form>
-              </div>
-            </div>
+    <!-- ここからnav -->
+    <div class="nav-wrapper mb-4 d-flex justify-content-between">
+      <nav class="navbar navbar-expand-lg navbar-light bg-theme-color fixed-top border-bottom">
+        <div>
+          <a class="navbar-brand title" href="/">
+          <img src="logo_white.png" width="100" height="45" class="d-inline-block align-top" alt="">
+        </a>
+        </div>
+        
+        
+      <div class="navbar-collapse d-flex justify-content-center">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"><i class="fa-solid fa-house char-white fa-lg"></i><span class="sr-only">(current)</span></a>
+          </li>
+          <div class="d-flex justify-content-end">
+            <li>
+              <form class="form-inline my-2 my-lg-0" action="/">
+                <input class="form-control mr-sm-2 bg-white" type="search" placeholder="Search" aria-label="Search" name=keyword>
+                <button class="btn outline-white my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass char-white"></i></button>
+              </form>
+            </li>
           </div>
+        </ul>
+        </div>
+        <div>
+            <ul class="nav nav-pills">
+              <li class="nav-item hover-accent">
+                <a class="btn char-white" href="/post"><i class="fa-solid fa-paper-plane"></i> 投稿する</a>
+              </li>
+            <li class="nav-item dropdown hover-accent">
+              <a class="nav-link dropdown-toggle char-white outline-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">マイアカウント</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">マイページ</a></li>
+                <li><a class="dropdown-item" href="#">お気に入り</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">ログアウト</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- ここまでnav -->
+    <div class="container-fluid main-wrapper">
+      <div class="container">
+        <% @contents.each do |content| %>
+              <% unless content.bike_img.empty? %>
+                <a href="/view/<%= content.id %>" class="item">
+                  <img class="img img-responsive full-width" src="<%= content.bike_img %>">
+                  <p><%= content.bike_type %></p>
+                </a>
+              <% end %>
         <% end %>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
