@@ -16,37 +16,40 @@
       <div class="row d-flex justify-content-center">
         <div class="card col-lg-6 m-5 card-bg-color">
           <div class="card-body">
-            <form action="/new" method="post" enctype="multipart/form-data">
-                <p>
-                    <input type="text" name="bike_type" class="form-control in-card-stroke in-card-bg" placeholder="車種"/>
-                </p>
-                <p>
-                    <input type="text" name="model_year" class="form-control in-card-stroke in-card-bg" placeholder="年式"/>
-                 </p>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">バイク画像</span>
-                  </div>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="file" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept="image/*" required>
-                    <label class="custom-file-label" for="inputGroupFile01">愛車の画像を選択</label>
-                  </div>
+            <form action="/new" method="post" enctype="multipart/form-data" class="row g-3">
+              <div class="col-md-6 mb-3">
+                <label for="bike_type" class="form-label">車種</label>
+                <input type="text" name="bike_type" class="form-control in-card-stroke in-card-bg" placeholder="CBR600RR" id="bike_type"/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="model_year" class="form-label">年式</label>
+                <input type="text" name="model_year" class="form-control in-card-stroke in-card-bg" placeholder="2020" id="model_year"/>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="inputGroupFile01" class="form-label">バイク画像</label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" name="file" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept="image/*" required>
+                  <label class="custom-file-label" for="inputGroupFile01">愛車の画像を選択</label>
                 </div>
-                <p>
-                    <input type="text" name="custom_part" class="form-control in-card-stroke in-card-bg" placeholder="カスタムパーツ"/>
-                </p>
-                <p>
-                    <input type="text" name="custom_brand" class="form-control in-card-stroke in-card-bg" placeholder="パーツメーカー"/>
-                </p>
-                <p>
-                    <input type="text" name="custom_url" class="form-control in-card-stroke in-card-bg" placeholder="パーツURL"/>
-                </p>
-                <p>
-                    <input type="text" name="my_favo" class="form-control in-card-stroke in-card-bg" placeholder="推しポイント"/>
-                </p>
-                <p>
-                    <input type="submit" value="公開する" class="btn btn-dark float-right in-card-post-button" />
-                </p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="custom_part" class="form-label">カスタムパーツ</label>
+                <input type="text" name="custom_part" class="form-control in-card-stroke in-card-bg" placeholder="マフラー" id="custom_part"/>              </div>
+              <div class="col-md-4 mb-3">
+                <label for="custom_brand" class="form-label">パーツメーカー</label>
+                <input type="text" name="custom_brand" class="form-control in-card-stroke in-card-bg" placeholder="Akrapovic" id="custom_brand"/>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="custom_url" class="form-label">商品リンク</label>
+                <input type="text" name="custom_url" class="form-control in-card-stroke in-card-bg" placeholder="https://" id="custom_url"/>
+              </div>
+               <div class="col-md-12 mb-3">
+                <label for="my_favo" class="form-label">推しポイント</label>
+                <input type="text" name="my_favo" class="form-control in-card-stroke in-card-bg" placeholder="見てほしいポイントを一言" id="my_favo"/>
+              </div>
+              <div class="d-flex justify-content-end">
+                <input type="submit" value="公開する" class="btn btn-dark in-card-post-button"/>
+              </div>
             </form>
           </div>
         </div>

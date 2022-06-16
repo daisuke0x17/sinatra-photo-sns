@@ -4,6 +4,9 @@ require "sinatra/reloader" if development?
 require "open-uri"
 require "sinatra/json"
 require "./models/contribution.rb"
+require "./models/user.rb"
+
+enable :sessions
 
 before do
   Dotenv.load
@@ -14,7 +17,47 @@ before do
   end
 end
 
+# ここからログイン
+get "/login" do
+  erb :login
+end
+  
+get '/signin' do
+  erb :sign_in
+end
+
+get '/signup' do
+  erb :sign_up
+end
+
+post '/signin' do
+  user = User.find_by(mail: params[:mail])
+  if user && user.authenticate(params[:password])
+    session[:user] = user.id
+  end
+  redirect '/'
+end
+  
+post '/signup' do
+  user = User.create(mail: params[:mail], password: params[:password],
+                      password_confirmation: params[:password_confirmation])
+  if user.persisted?
+    session[:user] = user.id
+  end
+  redirect '/'
+end
+
+get '/signout' do
+  session[:user] = nil
+  redirect '/'
+end
+# ここまでログイン
+
+
 get "/" do
+  if session[:user].nil?
+        redirect "/login"
+  end
   @contents = Contribution.all.order("id desc")
   if params[:keyword]
     # keyword = params[:keyword]
