@@ -110,7 +110,8 @@ post "/good/:id" do
   content.update({
     good: good + 1,
   })
-  redirect "/"
+  
+  content.good.to_s
 end
 
 

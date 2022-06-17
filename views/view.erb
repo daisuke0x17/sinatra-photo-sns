@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/982f8f279b.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -31,17 +32,27 @@
           <a href="<%= @content.custom_url %>" class="card-link" target="_blank">商品リンク</a>
         </div>
       <div class="card-footer text-muted">
-        <div class="d-flex justify-content-start">
-          <label><%= @content.good %></label>
-          <form action="/good/<%= @content.id %>" method="post">
-            <label for="like"><i class="fa-solid fa-heart ml-1"></i></label>
-            <input type="submit" class="d-none" id="like">
-          </form>
+        <div class="d-flex justify-content-start align-items-center">
+          <span class="like_label" data-id="<%= @content["id"] %>"><%= @content["good"] %></span>
+          <button class="like_button btn pl-0" data-id="<%= @content["id"] %>"><i class="fa-solid fa-heart ml-1"></i></button>
         </div>
          <div class="d-flex justify-content-end">
           <a href="/" class="btn btn-dark">戻る</a>
         </div>
       </div>
     </div>
+  <script>
+    $(document).on("click", ".like_button", function(){
+    var id = $(this).data("id");
+    
+    $.ajax({
+      url: "/good/" + id,
+      method: "POST",
+      success: function(n){
+        $(".like_label[data-id=" + id + "]").text(n);
+      }
+    });
+  });
+  </script>
   </body>
 </html>
